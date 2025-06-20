@@ -29,6 +29,7 @@ def refresh():
 	return_obj['sunrise'] = datetime.fromtimestamp(sunrise_utc).strftime('%I:%M %p')
 	sunset_utc = data['sys']['sunset']
 	return_obj['sunset'] = datetime.fromtimestamp(sunset_utc).strftime('%I:%M %p')
+	return_obj['timestamp'] = datetime.fromtimestamp(data['dt']).strftime("%m/%d/%Y, %I:%M:%S %p")
 
 	return return_obj
 
