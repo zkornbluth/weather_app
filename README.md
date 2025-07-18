@@ -27,6 +27,8 @@ You can either copy and paste that into `weather_app.py` or save it as an enviro
 
 ### 4. Set your location
 
+Update the `lat` and `long` variables in `latlong.py` to the latitude and longitude for your desired location.
+
 ### 5. Run the app
 
 ```bash
