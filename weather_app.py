@@ -19,8 +19,8 @@ def refresh():
 	return_obj['description'] = data['weather'][0]['main']
 	icon = data['weather'][0]['icon']
 	return_obj['icon_url'] = "https://openweathermap.org/img/wn/{0}@2x.png".format(icon)
-	return_obj['temp'] = data['main']['temp']
-	return_obj['feelslike'] = data['main']['feels_like']
+	return_obj['temp'] = round(data['main']['temp'])
+	return_obj['feelslike'] = round(data['main']['feels_like'])
 	return_obj['humidity'] = data['main']['humidity']
 	return_obj['windsp'] = data['wind']['speed']
 	sunrise_utc = data['sys']['sunrise']
