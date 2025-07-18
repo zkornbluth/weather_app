@@ -1,6 +1,7 @@
 # Tkinter Weather Widget
 
 ## Project Description/Features
+<img width="512" height="490" alt="weather-widget-1" src="https://github.com/user-attachments/assets/50272028-0954-413c-812b-983d654e10bf" />
 
 ## Getting Started
 
@@ -27,7 +28,7 @@ You can either copy and paste that into `weather_app.py` or save it as an enviro
 
 ### 4. Set your location
 
-Update the `lat` and `long` variables in `latlong.py` to the latitude and longitude for your desired location.
+Update the `lat` and `long` variables in `latlong.py` to the latitude and longitude for your desired location. Use positive values for North and East and negative values for South and West.
 
 ### 5. Run the app
 
