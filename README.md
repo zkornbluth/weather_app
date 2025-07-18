@@ -1,7 +1,7 @@
 # Tkinter Weather Widget
 
 ## Project Description/Features
-<img width="512" height="490" alt="weather-widget-1" src="https://github.com/user-attachments/assets/50272028-0954-413c-812b-983d654e10bf" />
+<img width="512" height="490" alt="weather-widget-2" src="https://github.com/user-attachments/assets/2ec13ea0-c831-4a79-91ec-3d472e8c2381" />
 
 ## Getting Started
 
