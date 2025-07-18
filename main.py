@@ -1,7 +1,6 @@
 from tkinter import *
 from PIL import Image, ImageTk
 import weather_app
-import datetime
 import requests
 from io import BytesIO
 
