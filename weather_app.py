@@ -1,15 +1,13 @@
 import requests
 from datetime import datetime
+import os
+from latlong import *
 
 # Free API - but will want to hide this if we post online so we don't exceed free limits
-OPENWEATHER_API_KEY = "345ac858ed4ac7c4b4e38d55a50f22ef"
-
-# Define lat and long for Westport, CT
-lat = 41.1414
-lon = -73.3581
+OPENWEATHER_API_KEY = os.environ['OPENWEATHER_API_KEY']
 
 # Call API
-WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather?lat={0}&lon={1}&appid={2}&units=imperial".format(lat, lon, OPENWEATHER_API_KEY)
+WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather?lat={0}&lon={1}&appid={2}&units=imperial".format(lat, long, OPENWEATHER_API_KEY)
 
 def refresh():
 	return_obj = {}
