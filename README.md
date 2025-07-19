@@ -1,6 +1,15 @@
 # Tkinter Weather Widget
+Install and run this widget to check the current weather at a chosen location.
 
 ## Project Description/Features
+The widget displays the following information:
+* Weather conditions
+* Temperature
+* Feels like
+* Humidity
+* Wind speed
+* Sunrise and sunset time
+
 <img width="512" height="490" alt="weather-widget-2" src="https://github.com/user-attachments/assets/2ec13ea0-c831-4a79-91ec-3d472e8c2381" />
 
 ## Getting Started
