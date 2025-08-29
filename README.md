@@ -10,7 +10,13 @@ The widget displays the following information:
 * Wind speed
 * Sunrise and sunset time
 
-<img width="512" height="490" alt="weather-widget-2" src="https://github.com/user-attachments/assets/2ec13ea0-c831-4a79-91ec-3d472e8c2381" />
+The widget also has input fields for latitude and longitude. Filling those out and clicking "Refresh" will update the information to that location. Use positive values for North and East, and negative values for South and West.
+
+The sunrise and sunset times are in the time zone of the machine running the widget, not the time zone of the inputted location.
+
+<img width="512" height="560" alt="weather-widget-3" src="https://github.com/user-attachments/assets/b216fd27-d206-4fad-9161-32b5b3f169cf" />
+
+<!-- <img width="512" height="490" alt="weather-widget-2" src="https://github.com/user-attachments/assets/2ec13ea0-c831-4a79-91ec-3d472e8c2381" /> -->
 
 ## Getting Started
 
@@ -35,7 +41,7 @@ Go to OpenWeather's [website](https://openweathermap.org/). Create a free accoun
 
 You can either copy and paste that into `weather_app.py` or save it as an environment variable by following the instructions [here](https://www.alibabacloud.com/help/en/model-studio/configure-api-key-through-environment-variables). If you do save it as an environment variable, be sure to name it `OPENWEATHER_API_KEY` as that's what `weather_app.py` is looking for.
 
-### 4. Set your location
+### 4. Set your default location
 
 Update the `lat` and `long` variables in `latlong.py` to the latitude and longitude for your desired location. Use positive values for North and East and negative values for South and West.
 
