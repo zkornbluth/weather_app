@@ -5,7 +5,13 @@ import requests
 from io import BytesIO
 
 def refresh_data():
-	new_data = weather_app.refresh()
+	lat = lat_entry.get().strip()
+	lon = lon_entry.get().strip()
+
+	if lat and lon:
+		new_data = weather_app.refresh(lat, lon)
+	else:
+		new_data = weather_app.refresh()
 
 	refresh_all_fields(new_data)
 
@@ -30,7 +36,7 @@ def get_new_icon(url):
 root = Tk()
 
 root.title('Weather App')
-root.geometry('400x350')
+root.geometry('400x420')
 root.configure(bg="#E8E8E8")
 
 city = Label(root, text="", bg="#E8E8E8", font=("Courier", 20))
@@ -44,8 +50,6 @@ sunrise = Label(root, text="", bg="#E8E8E8", font=("Courier", 20))
 sunset = Label(root, text="", bg="#E8E8E8", font=("Courier", 20))
 timestamp = Label(root, text="", font=("Courier", 9), bg="#E8E8E8")
 
-refresh_data()
-
 city.grid(pady=10, row=0, column=0, columnspan=2)
 description.grid(row=1, column=0, sticky=E)
 weather_icon.grid(row=1, column=1, sticky=W)
@@ -55,10 +59,22 @@ windsp.grid(row=4, column=0, columnspan=2)
 sunrise.grid(row=5, column=0, columnspan=2)
 sunset.grid(row=6, column=0, columnspan=2)
 
-refresh_btn = Button(root, text="Refresh", command=refresh_data, highlightbackground="#E8E8E8")
-refresh_btn.grid(row=7, column=0, columnspan=2)
+lat_label = Label(root, text="Latitude:", bg="#E8E8E8", font=("Courier", 14))
+lat_entry = Entry(root)
+lon_label = Label(root, text="Longitude:", bg="#E8E8E8", font=("Courier", 14))
+lon_entry = Entry(root)
 
-timestamp.grid(row=8, column=0, columnspan=2)
+lat_label.grid(row=7, column=0, sticky=E, pady=(25, 0))
+lat_entry.grid(row=7, column=1, sticky=W, pady=(25, 0))
+lon_label.grid(row=8, column=0, sticky=E)
+lon_entry.grid(row=8, column=1, sticky=W)
+
+refresh_btn = Button(root, text="Refresh", command=refresh_data, highlightbackground="#E8E8E8")
+refresh_btn.grid(row=9, column=0, columnspan=2)
+
+timestamp.grid(row=10, column=0, columnspan=2)
+
+refresh_data()
 
 root.grid_columnconfigure((0, 1), weight=1)
 
