@@ -1,3 +1,6 @@
+<!-- Author: Zach Kornbluth -->
+<!-- GitHub: github.com/zkornbluth -->
+
 # Tkinter Weather Widget
 Install and run this widget to check the current weather at a chosen location.
 
