@@ -1,7 +1,6 @@
 '''
 Filename: main.py
-Author: Zach Kornbluth
-GitHub: github.com/zkornbluth
+Author: Zachary Kornbluth <github.com/zkornbluth>
 Description: Generates Tkinter widget that displays weather data
 '''
 

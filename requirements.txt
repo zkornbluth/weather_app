@@ -1,5 +1,3 @@
-# Author: Zach Kornbluth
-# GitHub: github.com/zkornbluth
-
+# Author: Zachary Kornbluth <github.com/zkornbluth>
 Pillow==11.3.0
 Requests==2.32.4

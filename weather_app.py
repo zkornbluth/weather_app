@@ -1,7 +1,6 @@
 '''
 Filename: weather_app.py
-Author: Zach Kornbluth
-GitHub: github.com/zkornbluth
+Author: Zachary Kornbluth <github.com/zkornbluth>
 Description: Fetches weather data from OpenWeather API
 '''
 

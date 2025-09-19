@@ -1,4 +1,4 @@
-<!-- Author: Zach Kornbluth -->
+<!-- Author: Zachary Kornbluth -->
 <!-- GitHub: github.com/zkornbluth -->
 
 # Tkinter Weather Widget

@@ -1,7 +1,6 @@
 '''
 Filename: latlong.py
-Author: Zach Kornbluth
-GitHub: github.com/zkornbluth
+Author: Zachary Kornbluth <github.com/zkornbluth>
 Description: Defines LAT and LONG variables for weather location
 '''
 
