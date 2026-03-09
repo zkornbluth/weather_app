@@ -33,12 +33,19 @@ def refresh_data():
 	# Clear any previous error
 	error_label.configure(text="")
 
+	city_str = city_entry.get().strip()
 	lat_str = lat_entry.get().strip()
 	lon_str = lon_entry.get().strip()
 
 	try:
-		# If either latitude or longitude is provided, require and validate both
-		if lat_str or lon_str:
+		units = unit_var.get()
+
+		if city_str:
+			# City name takes priority: geocode to lat/lon, then fetch weather
+			lat, lon = weather_app.geocode(city_str)
+			new_data = weather_app.refresh(lat, lon, units=units)
+		elif lat_str or lon_str:
+			# Lat/long provided: validate and fetch weather
 			if not lat_str or not lon_str:
 				raise ValueError("Both latitude and longitude are required.")
 
@@ -50,9 +57,10 @@ def refresh_data():
 			if not (-180 <= lon <= 180):
 				raise ValueError("Invalid longitude. Must be between -180 and 180.")
 
-			new_data = weather_app.refresh(lat, lon, units=unit_var.get())
+			new_data = weather_app.refresh(lat, lon, units=units)
 		else:
-			new_data = weather_app.refresh(units=unit_var.get())
+			# Use default from latlong.py
+			new_data = weather_app.refresh(units=units)
 
 		refresh_all_fields(new_data)
 
@@ -93,7 +101,7 @@ def get_new_icon(url): # Retrieves new icon via the OpenWeather API
 root = Tk()
 
 root.title('Weather App')
-root.geometry('400x480')
+root.geometry('400x560')
 root.configure(bg="#E8E8E8")
 
 # Labels
@@ -130,27 +138,33 @@ unit_check = Checkbutton(
 )
 unit_check.grid(row=7, column=0, columnspan=2, pady=(10, 0))
 
-# Latitude and longitude labels and entries
-lat_label = Label(root, text="Latitude:", bg="#E8E8E8", font=("Courier", 14))
+# City name
+city_label = Label(root, text="City:", bg="#E8E8E8", font=("Courier", 10))
+city_entry = Entry(root)
+city_label.grid(row=8, column=0, sticky=E, pady=(5, 0))
+city_entry.grid(row=8, column=1, sticky=W, pady=(5, 0))
+
+# Latitude and longitude labels and entries (alternative to city)
+lat_label = Label(root, text="Latitude:", bg="#E8E8E8", font=("Courier", 10))
 lat_entry = Entry(root)
-lon_label = Label(root, text="Longitude:", bg="#E8E8E8", font=("Courier", 14))
+lon_label = Label(root, text="Longitude:", bg="#E8E8E8", font=("Courier", 10))
 lon_entry = Entry(root)
 
 # Grid for latitude and longitude labels and entries
-lat_label.grid(row=8, column=0, sticky=E, pady=(10, 0))
-lat_entry.grid(row=8, column=1, sticky=W, pady=(10, 0))
-lon_label.grid(row=9, column=0, sticky=E)
-lon_entry.grid(row=9, column=1, sticky=W)
+lat_label.grid(row=10, column=0, sticky=E, pady=(5, 0))
+lat_entry.grid(row=10, column=1, sticky=W, pady=(5, 0))
+lon_label.grid(row=11, column=0, sticky=E)
+lon_entry.grid(row=11, column=1, sticky=W)
 
 # Refresh button
 refresh_btn = Button(root, text="Refresh", command=refresh_data, highlightbackground="#E8E8E8")
-refresh_btn.grid(row=10, column=0, columnspan=2)
+refresh_btn.grid(row=12, column=0, columnspan=2)
 
 # Timestamp
-timestamp.grid(row=11, column=0, columnspan=2)
+timestamp.grid(row=13, column=0, columnspan=2)
 
 # Error message
-error_label.grid(row=12, column=0, columnspan=2)
+error_label.grid(row=14, column=0, columnspan=2)
 
 # Initial data refresh
 refresh_data()

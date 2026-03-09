@@ -7,6 +7,7 @@ Description: Fetches weather data from OpenWeather API
 import requests
 from datetime import datetime, timedelta
 import os
+from urllib.parse import quote
 from latlong import *
 
 
@@ -15,6 +16,31 @@ def _get_api_key():
 	if not api_key:
 		raise ValueError("API key error: Set OPENWEATHER_API_KEY environment variable.")
 	return api_key
+
+
+def geocode(city_name, api_key=None):
+	"""
+	Convert city name to lat/lon via OpenWeather Geocoding API.
+	city_name can be "New York", "Springfield, MA", "London, UK", etc.
+	Returns (lat, lon). Raises ValueError if no results or API error.
+	"""
+	if api_key is None:
+		api_key = _get_api_key()
+	url = "http://api.openweathermap.org/geo/1.0/direct?q={0}&limit=1&appid={1}".format(quote(city_name.strip()), api_key)
+	try:
+		result = requests.get(url, timeout=5)
+		result.raise_for_status()
+		results = result.json()
+	except requests.exceptions.HTTPError as e:
+		if result.status_code == 401:
+			raise ValueError("API error: Check your OpenWeather API key.") from e
+		raise ValueError("Geocoding API error. Try a different city name.") from e
+	except requests.exceptions.RequestException:
+		raise
+	if not results:
+		raise ValueError("No location found for that city.")
+	first = results[0]
+	return (first['lat'], first['lon'])
 
 
 def refresh(lat=None, long=None, units='imperial'):
